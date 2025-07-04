@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ThemeBtn from "./ThemeBtn";
+import { SignedIn, SignedOut, UserButton, UserProfile } from "@clerk/nextjs";
 
 function Header() {
   return (
@@ -31,14 +32,19 @@ function Header() {
               About
             </Link>
           </li>
-          <li>
-            <Link
-              href="/sign-in"
-              className="hover:text-[#f36913] transition-colors duration-300"
-            >
-              Sign in
-            </Link>
-          </li>
+          <SignedOut>
+            <li>
+              <Link
+                href="/signin"
+                className="hover:text-[#f36913] transition-colors duration-300"
+              >
+                Sign in
+              </Link>
+            </li>
+          </SignedOut>
+          <SignedIn>
+            <UserButton/>
+          </SignedIn>
         </ul>
       </div>
     </div>
